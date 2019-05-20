@@ -1,0 +1,25 @@
+<div *ngIf="vegetables">
+	<ol class="vegetables">
+		<li *ngFor="let vegetable of vegetables">
+			<a routerLink="/details/{{vegetable.id}}">
+				<span class="badge" [style.background-color]="vegetable.color">{{vegetable.name}}</span>
+			</a>
+
+			<button *ngIf="auth.hasPermission('delete')" class="delete" title="Delete Vegetable" (click)="delete(vegetable);">x</button>
+		</li>
+	</ol>
+</div>
+
+<hr />
+<div *ngIf="auth.hasPermission('create')">
+	<h3>New Vegetable</h3>
+	<div>
+		<label>
+			Vegetable name: <input #vegetableName placeholder="Name" />
+		</label>
+		<label>
+			Color: <input #vegetableColor type="color" value="#008000" />
+		</label>
+		<button (click)="add(vegetableName.value, vegetableColor.value); vegetableName.value = '';">Add</button>
+	</div>
+</div>

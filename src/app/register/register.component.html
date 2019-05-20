@@ -1,0 +1,29 @@
+<table>
+	<tr>
+		<td>First name</td>
+		<td><input type="text" [(ngModel)]="user.firstName" /></td>
+	</tr>
+	<tr>
+		<td>Last name</td>
+		<td><input type="text" [(ngModel)]="user.lastName" /></td>
+	</tr>
+	<tr>
+		<td>Username</td>
+		<td>
+			<input type="text" #username [(ngModel)]="user.username" (input)="checkUsername(username.value)" />
+			<span class="error" *ngIf="invalid$ | async">This username is taken</span>
+		</td>
+	</tr>
+	<tr>
+		<td>Password</td>
+		<td><input type="password" #password1 [(ngModel)]="user.password" (input)="checkPasswords(password1.value, password2.value)" /></td>
+	</tr>
+	<tr>
+		<td>Confirm password</td>
+		<td><input type="password" #password2 (input)="checkPasswords(password1.value, password2.value)" /></td>
+		<span class="error" *ngIf="differentPasswords">Passwords do not match</span>
+	</tr>
+</table>
+
+<button (click)="register()">Register</button>
+<span class="error" *ngIf="registrationError">{{registrationError}}</span>

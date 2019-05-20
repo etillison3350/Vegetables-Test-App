@@ -1,0 +1,8 @@
+<h3>Top Vegetables</h3>
+<div class="grid grid-pad">
+	<a *ngFor="let vegetable of vegetables" class="col-1-5" routerLink="/details/{{vegetable.id}}">
+		<div class="module vegetable" [style.background-color]="vegetable.color">
+			<h4>{{vegetable.name}}</h4>
+		</div>
+	</a>
+</div>

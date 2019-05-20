@@ -1,0 +1,7 @@
+<label>
+	Username: <input #username name="username" placeholder="Username" [(ngModel)]="credentials.username" />
+</label>
+<label>
+	Password: <input type="password" #password name="password" [(ngModel)]="credentials.password" />
+</label>
+<button type="submit" (click)="login()">Log In</button>

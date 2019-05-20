@@ -1,0 +1,16 @@
+<div *ngIf="vegetable" style="padding:20px 0px;">
+	<span style="font-weight: bold;" [style.color]="vegetable.color">{{vegetable.name | uppercase}}</span><br />
+	<span>ID: {{vegetable.id}}</span><br /><br />
+  
+	<div *ngIf="auth.hasPermission('update')">
+		<label>
+			Name:<input [(ngModel)]="vegetable.name" placeholder="Name" />
+		</label>
+		<br />
+		<label>
+			Color: <input type="color" [(ngModel)]="vegetable.color" />
+		</label>
+		<br />
+		<button (click)="save()">Save</button>
+	</div>
+</div>
